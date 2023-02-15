@@ -107,7 +107,7 @@ object frmADOGetcode: TfrmADOGetcode
     Left = 152
     Top = 72
   end
-  object MyQry_codestr: TMyQuery
+  object MyQry_codestr: TUniQuery
     AfterScroll = ADO_codestrAfterScroll
     Left = 112
     Top = 104

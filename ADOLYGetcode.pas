@@ -66,7 +66,7 @@ interface
 uses
   Windows, SysUtils, Forms,Classes,
   Grids, DBGrids, DB, ADODB,StdCtrls, Controls, ExtCtrls,StrUtils, Buttons,
-  DBAccess, MemDS, MyAccess;
+  DBAccess, Uni, MemDS;
 
 type
   TGetCodePos = (gcLeft,gcNone,gcRight,gcAll);
@@ -74,7 +74,7 @@ type
 type
   TfrmADOGetcode = class(TForm)
     ADO_codestr: TADOQuery;
-    MyQry_codestr: TMyQuery;
+    MyQry_codestr: TUniQuery;
     Ds_codestr: TDataSource;
     Panel4: TPanel;
     Panel1: TPanel;
@@ -113,7 +113,7 @@ type
   private
     { Private declarations }
     FConnection:TADOConnection;
-    FMyConnection:TMyConnection;
+    FMyConnection:TUniConnection;
     Fopenstr:STRING;
     FInValue:STRING;
     FInField:STRING;
@@ -127,7 +127,7 @@ type
     FifAbetChineseChar:boolean;
     FShowX,FShowY:integer;
     procedure FSetConnection(value:TADOConnection);
-    procedure FSetMyConnection(value:TMyConnection);
+    procedure FSetMyConnection(value:TUniConnection);
     procedure FSetOpenStr(value:string);
     procedure FSetInValue(value:string);
     procedure FSetInField(value:string);
@@ -152,7 +152,7 @@ type
   published
     { Published declarations }
     property Connection:TADOConnection read FConnection write FSetConnection;
-    property MyConnection:TMyConnection read FMyConnection write FSetMyConnection;
+    property MyConnection:TUniConnection read FMyConnection write FSetMyConnection;
     property OpenStr:string read FOpenStr write FSetOpenStr;
     property IfNullGetCode:boolean read FIfNullGetCode write FsetIfNullGetCode;
     Property IfShowDialogOneRecord:boolean read FIfShowDialogOneRecord write FsetIfShowDialogOneRecord;//只有一条记录时是否显示对话框
@@ -461,7 +461,7 @@ begin
   FConnection:=value;
 end;
 
-procedure TADOLYGetcode.FSetMyConnection(value: TMyConnection);
+procedure TADOLYGetcode.FSetMyConnection(value: TUniConnection);
 begin
   if value=FMyConnection then exit;
   FMyConnection:=value;
